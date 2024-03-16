@@ -6,13 +6,42 @@ import 'package:latest_meal_app_riverpod/widget/category_grid_item_widget.dart';
 import '../model/category_model.dart';
 import '../model/meals_model.dart';
 
-class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({super.key,  required this.availableMeals,});
+class CategoryScreen extends StatefulWidget {
+  const CategoryScreen({
+    super.key,
+    required this.availableMeals,
+  });
 
   final List<MealModel> availableMeals;
 
+  @override
+  State<CategoryScreen> createState() => _CategoryScreenState();
+}
+
+class _CategoryScreenState extends State<CategoryScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+      lowerBound: 0,
+      upperBound: 1,
+
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
   void _selectCategory(BuildContext context, CategoryModel category) {
-    final filteredMeals = availableMeals
+    final filteredMeals = widget.availableMeals
         .where(
           (meal) => meal.categories.contains(
             category.id,
