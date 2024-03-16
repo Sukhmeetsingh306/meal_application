@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:latest_meal_app_riverpod/model/meals_model.dart';
 import 'package:latest_meal_app_riverpod/widget/meal_item_trait_widget.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -41,14 +43,17 @@ class MealsItemWidget extends StatelessWidget {
         },
         child: Stack(
           children: [
-            FadeInImage(
-              placeholder: MemoryImage(kTransparentImage),
-              image: NetworkImage(
-                meal.imageUrl,
+            Hero(
+              tag: meal.id,
+              child: FadeInImage(
+                placeholder: MemoryImage(kTransparentImage),
+                image: NetworkImage(
+                  meal.imageUrl,
+                ),
+                fit: BoxFit.cover,
+                height: 200,
+                width: double.infinity,
               ),
-              fit: BoxFit.cover,
-              height: 200,
-              width: double.infinity,
             ),
             Positioned(
               bottom: 0,
