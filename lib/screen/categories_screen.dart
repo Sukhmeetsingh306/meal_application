@@ -30,8 +30,9 @@ class _CategoryScreenState extends State<CategoryScreen>
       duration: const Duration(milliseconds: 300),
       lowerBound: 0,
       upperBound: 1,
-
     );
+
+    _animationController.forward();
   }
 
   @override
@@ -61,27 +62,36 @@ class _CategoryScreenState extends State<CategoryScreen>
 
   @override
   Widget build(BuildContext context) {
-    return GridView(
-      padding: const EdgeInsets.all(24),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 1.5,
-        crossAxisSpacing: 20,
-        mainAxisSpacing: 20,
+    return AnimatedBuilder(
+      animation: _animationController,
+      child: GridView(
+        padding: const EdgeInsets.all(24),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 1.5,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
+        ),
+        children: [
+          //availableCategories.map((category) => CategoryGridItemWidget(category: category)).toList(); // cam also written in this way
+          for (final category in availableCategories)
+            CategoryGridItemWidget(
+              category: category,
+              onSelectedCategory: () {
+                _selectCategory(
+                  context,
+                  category,
+                );
+              },
+            )
+        ],
       ),
-      children: [
-        //availableCategories.map((category) => CategoryGridItemWidget(category: category)).toList(); // cam also written in this way
-        for (final category in availableCategories)
-          CategoryGridItemWidget(
-            category: category,
-            onSelectedCategory: () {
-              _selectCategory(
-                context,
-                category,
-              );
-            },
-          )
-      ],
+      builder: (context, child) => Padding(
+        padding: EdgeInsets.only(
+          top: 100 - _animationController.value * 100,
+        ),
+        child: child,
+      ),
     );
   }
 }
