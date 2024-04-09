@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCLP2bL98ZgKIciAq0d7SQoSUsNnAoFeoI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>139067419463</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.latestMealAppRiverpod</string>
+	<key>PROJECT_ID</key>
+	<string>meal-app-login</string>
+	<key>STORAGE_BUCKET</key>
+	<string>meal-app-login.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:139067419463:ios:a3fb007e4adfc3f6ddfa62</string>
+	<key>DATABASE_URL</key>
+	<string>https://meal-app-login-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

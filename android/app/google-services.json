@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "139067419463",
+    "firebase_url": "https://meal-app-login-default-rtdb.firebaseio.com",
+    "project_id": "meal-app-login",
+    "storage_bucket": "meal-app-login.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139067419463:android:5e581d5e9688d02eddfa62",
+        "android_client_info": {
+          "package_name": "com.example.latest_meal_app_riverpod"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFxAyzeI96zZgYDNbG_PafPv01CLbp-ls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
