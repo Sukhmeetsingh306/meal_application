@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:latest_meal_app_riverpod/model/meals_model.dart';
 import 'package:latest_meal_app_riverpod/widget/meal_item_trait_widget.dart';
 import 'package:transparent_image/transparent_image.dart';
