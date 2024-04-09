@@ -67,12 +67,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
         await FirebaseFirestore.instance
             .collection('users')
-            .doc(userCredentials.user!.uid) 
+            .doc(userCredentials.user!.uid)
             .set({
           'username': _enteredUsername,
           'email': _enteredEmail,
           'imageUrl': imageUrl,
-        });//this give the name according to the user credentials
+        }); //this give the name according to the user credentials
       }
     } on FirebaseAuthException catch (error) {
       if (error.code == 'email-already-in-use') {}
@@ -93,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.primary,
+      backgroundColor: Colors.black,
       body: Center(
         child: SingleChildScrollView(
           child: Column(
@@ -129,6 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             TextFormField(
                               decoration:
                                   const InputDecoration(labelText: 'Username'),
+                              style: const TextStyle(color: Colors.white),
                               enableSuggestions: false,
                               validator: (value) {
                                 if (value == null ||
@@ -146,6 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             decoration: const InputDecoration(
                               labelText: 'Email',
                             ),
+                            style: const TextStyle(color: Colors.white),
                             keyboardType: TextInputType.emailAddress,
                             autocorrect: false,
                             textCapitalization: TextCapitalization.none,
@@ -166,6 +168,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             decoration: const InputDecoration(
                               labelText: 'Password',
                             ),
+                            style: const TextStyle(color: Colors.white),
                             obscureText: true,
                             validator: (value) {
                               if (value == null || value.trim().length < 6) {
