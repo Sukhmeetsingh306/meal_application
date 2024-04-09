@@ -39,6 +39,10 @@ dependencies:
   transparent_image: ^2.0.1
   flutter_riverpod: ^2.5.1
   mysql1: ^0.20.0
+  cloud_firestore: ^4.16.0
+  firebase_auth: ^4.19.0
+  firebase_storage: ^11.7.0
+  image_picker: ^1.0.7
 
 dev_dependencies:
   flutter_test:

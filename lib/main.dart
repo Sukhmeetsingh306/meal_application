@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:latest_meal_app_riverpod/screen/login_screen.dart';
+import 'package:latest_meal_app_riverpod/screen/splash_screen.dart';
 import 'package:latest_meal_app_riverpod/screen/tabs_screen.dart';
 
 final theme = ThemeData(
@@ -29,7 +32,20 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme,
-      home: const TabScreen(),
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapShot) {
+          if (snapShot.connectionState == ConnectionState.waiting) {
+            return const SplashScreen();
+          }
+
+          if (snapShot.hasData) {
+            return const TabScreen();
+          }
+
+          return const LoginScreen();
+        },
+      ),
     );
   }
 }
