@@ -74,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
           'imageUrl': imageUrl,
         }); //this give the name according to the user credentials
       }
-    } on FirebaseAuthException catch (error) { 
+    } on FirebaseAuthException catch (error) {
       if (error.code == 'email-already-in-use') {}
       ScaffoldMessenger.of(context).clearSnackBars();
       ScaffoldMessenger.of(context).showSnackBar(
@@ -154,8 +154,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             validator: (value) {
                               if (value == null ||
                                   value.trim().isEmpty ||
-                                  !value.contains("@") ||
-                                  !value.contains(".com")) {
+                                  !value.contains("@gmail.com") &&
+                                  !value.contains("@icloud.com") &&
+                                  !value.contains("@yahoo.com")) {
                                 return 'Please enter a valid email';
                               }
                               return null;
