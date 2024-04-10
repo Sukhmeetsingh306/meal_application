@@ -87,9 +87,9 @@ class _TabScreenState extends ConsumerState<TabScreen> {
             onPressed: () {
               FirebaseAuth.instance.signOut();
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.exit_to_app,
-              color: Theme.of(context).colorScheme.primary,
+              color: Colors.white,
             ),
           ),
         ],
