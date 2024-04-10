@@ -74,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
           'imageUrl': imageUrl,
         }); //this give the name according to the user credentials
       }
-    } on FirebaseAuthException catch (error) {
+    } on FirebaseAuthException catch (error) { 
       if (error.code == 'email-already-in-use') {}
       ScaffoldMessenger.of(context).clearSnackBars();
       ScaffoldMessenger.of(context).showSnackBar(
