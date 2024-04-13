@@ -76,6 +76,23 @@ class MainDrawerWidget extends StatelessWidget {
               onSelectScreen('filters');
             },
           ),
+          ListTile(
+            leading: Icon(
+              Icons.logout_sharp,
+              size: 26,
+              color: Theme.of(context).colorScheme.onBackground,
+            ),
+            title: Text(
+              'Logout',
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                    fontSize: 24,
+                  ),
+            ),
+            onTap: () {
+              Navigator.of(context).pop();
+            },
+          ),
         ],
       ),
     );
