@@ -127,9 +127,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           if (!_isLogin)
                             TextFormField(
-                              decoration:
-                                  const InputDecoration(labelText: 'Username'),
+                              decoration: const InputDecoration(
+                                labelText: 'Username',
+                                labelStyle: TextStyle(color: Colors.grey),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                              ),
                               style: const TextStyle(color: Colors.white),
+                              cursorColor: Colors.white,
                               enableSuggestions: false,
                               validator: (value) {
                                 if (value == null ||
@@ -146,7 +152,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           TextFormField(
                             decoration: const InputDecoration(
                               labelText: 'Email',
+                              labelStyle: TextStyle(color: Colors.grey),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                              ),
                             ),
+                            cursorColor: Colors.white,
                             style: const TextStyle(color: Colors.white),
                             keyboardType: TextInputType.emailAddress,
                             autocorrect: false,
@@ -155,8 +166,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               if (value == null ||
                                   value.trim().isEmpty ||
                                   !value.contains("@gmail.com") &&
-                                  !value.contains("@icloud.com") &&
-                                  !value.contains("@yahoo.com")) {
+                                      !value.contains("@icloud.com") &&
+                                      !value.contains("@yahoo.com")) {
                                 return 'Please enter a valid email';
                               }
                               return null;
@@ -168,7 +179,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           TextFormField(
                             decoration: const InputDecoration(
                               labelText: 'Password',
+                              hoverColor: Colors.white,
+                              labelStyle: TextStyle(color: Colors.grey),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.white),
+                              ),
                             ),
+                            cursorColor: Colors.white,
                             style: const TextStyle(color: Colors.white),
                             obscureText: true,
                             validator: (value) {
@@ -195,6 +212,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       .primaryContainer),
                               child: Text(
                                 _isLogin ? 'Login In' : 'Sign Up',
+                                style: const TextStyle(color: Colors.white),
                               ),
                             ),
                           if (!_isAuthenticationUploading)
@@ -208,6 +226,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 _isLogin
                                     ? 'Create an account'
                                     : 'Already have a account? Login',
+                                style: const TextStyle(color: Colors.white),
                               ),
                             ),
                         ],

@@ -12,6 +12,7 @@ import 'package:latest_meal_app_riverpod/screen/tabs_screen.dart';
 final theme = ThemeData(
   useMaterial3: true,
   colorScheme: ColorScheme.fromSeed(
+    primary: const Color.fromARGB(210, 227, 169, 69),
     brightness: Brightness.dark,
     seedColor: const Color.fromARGB(255, 4, 4, 4),
   ),
