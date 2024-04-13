@@ -48,11 +48,14 @@ class _UserImagePickerWidgetState extends State<UserImagePickerWidget> {
         ),
         TextButton.icon(
           onPressed: _pickImage,
-          icon: const Icon(Icons.image),
-          label: Text(
+          icon: const Icon(
+            Icons.image,
+            color: Colors.white,
+          ),
+          label: const Text(
             'Add Image',
             style: TextStyle(
-              color: Theme.of(context).colorScheme.primary,
+              color: Colors.white,
             ),
           ),
         ),
