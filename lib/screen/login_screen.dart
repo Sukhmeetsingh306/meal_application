@@ -107,7 +107,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   right: 20,
                 ),
                 width: 200,
-                child: Image.asset('assets/images/chat.png'),
+                height:
+                    200, // Ensure width and height are the same for a perfect circle
+                child: ClipOval(
+                  child: Image.asset('assets/images/M.jpg'),
+                ),
               ),
               Card(
                 margin: const EdgeInsets.all(20),
