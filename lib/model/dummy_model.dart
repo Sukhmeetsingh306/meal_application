@@ -376,6 +376,7 @@ const dummyMealModels = [
     id: 'm10',
     categories: [
       'c2',
+      'c4',
       'c5',
       'c10',
     ],
@@ -443,7 +444,10 @@ const dummyMealModels = [
       isLactoseFree: true),
   MealModel(
       id: "m51",
-      categories: ["c1", "c8"],
+      categories: [
+        "c1",
+        "c8",
+      ],
       title: "Ratatouille",
       affordability: Affordability.affordable,
       complexity: Complexity.simple,
@@ -476,7 +480,10 @@ const dummyMealModels = [
       isLactoseFree: true),
   MealModel(
       id: "m61",
-      categories: ["c7", "c5"],
+      categories: [
+        "c7",
+        "c5",
+      ],
       title: "Greek Yogurt Parfait",
       affordability: Affordability.affordable,
       complexity: Complexity.simple,
@@ -501,7 +508,10 @@ const dummyMealModels = [
       isLactoseFree: false),
   MealModel(
       id: "m71",
-      categories: ["c4", "c9"],
+      categories: [
+        "c4",
+        "c9",
+      ],
       title: "Coq au Vin",
       affordability: Affordability.luxurious,
       complexity: Complexity.hard,
@@ -536,7 +546,10 @@ const dummyMealModels = [
       isLactoseFree: false),
   MealModel(
     id: "m81",
-    categories: ["c5", "c10"],
+    categories: [
+      "c5",
+      "c10",
+    ],
     title: "Mango Coconut Smoothie Bowl",
     affordability: Affordability.affordable,
     complexity: Complexity.simple,
@@ -565,7 +578,10 @@ const dummyMealModels = [
   ),
   MealModel(
       id: "m91",
-      categories: ["c8", "c6"],
+      categories: [
+        "c8",
+        "c6",
+      ],
       title: "Sushi Rolls",
       affordability: Affordability.pricey,
       complexity: Complexity.hard,
@@ -594,36 +610,82 @@ const dummyMealModels = [
       isVegetarian: false,
       isLactoseFree: true),
   MealModel(
-      id: "m101",
-      categories: ["c9", "c2"],
-      title: "Croque Monsieur",
-      affordability: Affordability.pricey,
-      complexity: Complexity.simple,
-      imageUrl:
-          "https://img.freepik.com/premium-photo/closeup-delicious-croque-monsieur-sandwich-bread-dinner-meal-tasty-meat-wooden-boardai-generated_548729-4979.jpg",
-      duration: 30,
-      ingredients: [
-        "4 slices White Bread",
-        "4 slices Ham",
-        "4 slices Gruyere or Emmental Cheese",
-        "2 tablespoons Butter",
-        "2 tablespoons Flour",
-        "1 cup Milk",
-        "Salt and Pepper",
-        "Nutmeg (optional)"
-      ],
-      steps: [
-        "Preheat oven to 180°C (350°F).",
-        "Melt butter in a saucepan, then whisk in flour to form a roux.",
-        "Gradually whisk in milk until smooth and thickened.",
-        "Season with salt, pepper, and nutmeg if using.",
-        "Toast bread slices lightly and place on a baking sheet.",
-        "Top each slice with ham and cheese, then spoon béchamel sauce over the top.",
-        "Bake for 10-15 minutes until cheese is bubbly and golden brown.",
-        "Serve hot with a side salad."
-      ],
-      isGlutenFree: false,
-      isVegan: false,
-      isVegetarian: false,
-      isLactoseFree: false),
+    id: "m101",
+    categories: [
+      "c9",
+      "c2",
+    ],
+    title: "Croque Monsieur",
+    affordability: Affordability.pricey,
+    complexity: Complexity.simple,
+    imageUrl:
+        "https://img.freepik.com/premium-photo/closeup-delicious-croque-monsieur-sandwich-bread-dinner-meal-tasty-meat-wooden-boardai-generated_548729-4979.jpg",
+    duration: 30,
+    ingredients: [
+      "4 slices White Bread",
+      "4 slices Ham",
+      "4 slices Gruyere or Emmental Cheese",
+      "2 tablespoons Butter",
+      "2 tablespoons Flour",
+      "1 cup Milk",
+      "Salt and Pepper",
+      "Nutmeg (optional)"
+    ],
+    steps: [
+      "Preheat oven to 180°C (350°F).",
+      "Melt butter in a saucepan, then whisk in flour to form a roux.",
+      "Gradually whisk in milk until smooth and thickened.",
+      "Season with salt, pepper, and nutmeg if using.",
+      "Toast bread slices lightly and place on a baking sheet.",
+      "Top each slice with ham and cheese, then spoon béchamel sauce over the top.",
+      "Bake for 10-15 minutes until cheese is bubbly and golden brown.",
+      "Serve hot with a side salad."
+    ],
+    isGlutenFree: false,
+    isVegan: false,
+    isVegetarian: false,
+    isLactoseFree: false,
+  ),
+  MealModel(
+    id: "m112",
+    categories: [
+      'c7',
+      'c9',
+      "c10",
+    ],
+    title: "Quinoa Salad",
+    affordability: Affordability.affordable,
+    complexity: Complexity.simple,
+    imageUrl:
+        "https://www.wholesomeyum.com/wp-content/uploads/2022/08/wholesomeyum-Mediterranean-Quinoa-Salad-1.jpg",
+    duration: 30,
+    ingredients: [
+      "1 cup Quinoa",
+      "2 cups Water or Vegetable Broth",
+      "1 Red Bell Pepper, diced",
+      "1 Yellow Bell Pepper, diced",
+      "1 Cucumber, diced",
+      "1/2 Red Onion, finely chopped",
+      "1/4 cup Fresh Parsley, chopped",
+      "1/4 cup Fresh Cilantro, chopped",
+      "1/4 cup Olive Oil",
+      "2 tablespoons Lemon Juice",
+      "Salt and Pepper to taste"
+    ],
+    steps: [
+      "Rinse quinoa under cold water.",
+      "In a pot, bring water or vegetable broth to a boil.",
+      "Add quinoa, cover, and simmer for 15-20 minutes, or until all liquid is absorbed.",
+      "Remove from heat and let it cool.",
+      "In a large bowl, combine cooked quinoa with diced bell peppers, cucumber, red onion, parsley, and cilantro.",
+      "Drizzle olive oil and lemon juice over the salad, then toss to combine.",
+      "Season with salt and pepper to taste.",
+      "Chill in the refrigerator for at least 30 minutes before serving.",
+      "Enjoy the refreshing and nutritious quinoa salad!"
+    ],
+    isGlutenFree: true,
+    isVegan: true,
+    isVegetarian: true,
+    isLactoseFree: true,
+  ),
 ];
