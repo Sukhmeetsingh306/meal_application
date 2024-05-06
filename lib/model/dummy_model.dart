@@ -406,4 +406,132 @@ const dummyMealModels = [
     isVegetarian: true,
     isLactoseFree: true,
   ),
+
+  
+  MealModel(
+    id: "m41",
+    categories: ["c3","c6",],
+    title: "Thai Green Curry",
+    affordability: Affordability.pricey,
+    complexity: Complexity.hard,
+    imageUrl: "https://www.bluedragon.ca/system/recipes/images/000/000/226/original/3-step-green-curry.jpg?1572290676",
+    duration: 60,
+    ingredients: [
+      "200g Chicken Breast",
+      "2 tablespoons Green Curry Paste",
+      "400ml Coconut Milk",
+      "1 Eggplant",
+      "1 Red Bell Pepper",
+      "Handful of Thai Basil Leaves",
+      "1 tablespoon Fish Sauce",
+      "1 tablespoon Palm Sugar"
+    ],
+    steps: [
+      "Cut chicken into bite-sized pieces.",
+      "Heat coconut milk in a pan until it starts to boil.",
+      "Add green curry paste and stir until fragrant.",
+      "Add chicken and cook until almost done.",
+      "Add sliced eggplant and bell pepper, cook until vegetables are tender.",
+      "Season with fish sauce and palm sugar.",
+      "Serve hot with steamed rice, garnished with Thai basil leaves."
+    ],
+    isGlutenFree: true,
+    isVegan: false,
+    isVegetarian: false,
+    isLactoseFree: true
+  ),
+  MealModel(
+    id: "m51",
+    categories: ["c1","c8"],
+    title: "Ratatouille",
+    affordability: Affordability.affordable,
+    complexity: Complexity.simple,
+    imageUrl: "https://ohmydish.com/wp-content/uploads/2015/03/Remys-ratatouille-2.jpg",
+    duration: 40,
+    ingredients: [
+      "1 Eggplant",
+      "2 Zucchinis",
+      "2 Bell Peppers (red and yellow)",
+      "4 Tomatoes",
+      "1 Onion",
+      "4 cloves Garlic",
+      "2 tablespoons Olive Oil",
+      "Herbs (thyme, rosemary, basil)",
+      "Salt and Pepper"
+    ],
+    steps: [
+      "Slice all vegetables into thin rounds or cubes.",
+      "Heat olive oil in a large pan or pot.",
+      "Add onions and garlic, sauté until fragrant.",
+      "Layer vegetables in the pan, alternating between eggplant, zucchini, bell peppers, and tomatoes.",
+      "Season each layer with herbs, salt, and pepper.",
+      "Cover and simmer for about 30 minutes, until vegetables are tender.",
+      "Serve hot or cold, garnished with fresh herbs."
+    ],
+    isGlutenFree: true,
+    isVegan: true,
+    isVegetarian: true,
+    isLactoseFree: true
+  ),
+  MealModel(
+    id: "m61",
+    categories: ["c7","c5"],
+    title: "Greek Yogurt Parfait",
+    affordability: Affordability.affordable,
+    complexity: Complexity.simple,
+    imageUrl: "https://www.fooddolls.com/wp-content/uploads/2023/05/Fruit-Parfait17844-1-1200x800.jpg",
+    duration: 10,
+    ingredients: [
+      "1 cup Greek Yogurt",
+      "1/2 cup Granola",
+      "1/2 cup Mixed Berries (strawberries, blueberries, raspberries)",
+      "1 tablespoon Honey"
+    ],
+    steps: [
+      "Layer Greek yogurt, granola, and mixed berries in a glass or bowl.",
+      "Drizzle honey on top.",
+      "Repeat layers if desired.",
+      "Serve immediately for a crunchy and refreshing parfait!"
+    ],
+    isGlutenFree: true,
+    isVegan: false,
+    isVegetarian: true,
+    isLactoseFree: false
+  ),
+  MealModel(
+    id: "m71",
+    categories: ["c4","c9"],
+    title: "Coq au Vin",
+    affordability: Affordability.luxurious,
+    complexity: Complexity.hard,
+    imageUrl: "https://i.ytimg.com/vi/hJswLfXL_GA/maxresdefault.jpg",
+    duration: 120,
+    ingredients: [
+      "1 whole Chicken (cut into pieces)",
+      "200g Bacon",
+      "1 bottle Red Wine",
+      "250g Mushrooms",
+      "2 Onions",
+      "4 cloves Garlic",
+      "2 Carrots",
+      "2 tablespoons Flour",
+      "2 tablespoons Butter",
+      "2 tablespoons Olive Oil",
+      "Salt and Pepper"
+    ],
+    steps: [
+      "Marinate chicken pieces in red wine overnight.",
+      "In a large pot, cook bacon until crispy, then remove and set aside.",
+      "Brown chicken pieces in the same pot, then remove and set aside.",
+      "Sauté onions, garlic, carrots, and mushrooms until softened.",
+      "Return chicken and bacon to the pot, sprinkle flour and stir to coat.",
+      "Pour in marinated wine and bring to a simmer.",
+      "Cover and cook on low heat for about 90 minutes, until chicken is tender.",
+      "Serve hot, garnished with fresh parsley."
+    ],
+    isGlutenFree: false,
+    isVegan: false,
+    isVegetarian: false,
+    isLactoseFree: false
+  ),
 ];
