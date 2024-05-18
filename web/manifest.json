@@ -1,6 +1,6 @@
 {
-    "name": "latest_meal_app_riverpod",
-    "short_name": "latest_meal_app_riverpod",
+    "name": "Meals",
+    "short_name": "Meals",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
