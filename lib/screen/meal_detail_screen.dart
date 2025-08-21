@@ -62,7 +62,17 @@ class MealDetailScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
+      body: buildCode(context),
+    );
+  }
+
+  Widget buildCode(BuildContext context) {
+    final isLargeScreen =
+        MediaQuery.of(context).size.width > 800; // breakpoint for web/tablet
+
+    if (!isLargeScreen) {
+      // 📱 Mobile layout (your original)
+      return SingleChildScrollView(
         child: Column(
           children: [
             Hero(
@@ -74,9 +84,7 @@ class MealDetailScreen extends ConsumerWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(
-              height: 14,
-            ),
+            const SizedBox(height: 14),
             Text(
               'Ingredients',
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
@@ -84,19 +92,15 @@ class MealDetailScreen extends ConsumerWidget {
                     fontWeight: FontWeight.bold,
                   ),
             ),
-            const SizedBox(
-              height: 14,
-            ),
-            for (final ingredients in meal.ingredients)
+            const SizedBox(height: 14),
+            for (final ingredient in meal.ingredients)
               Text(
-                ingredients,
+                ingredient,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: Theme.of(context).colorScheme.onBackground,
                     ),
               ),
-            const SizedBox(
-              height: 24,
-            ),
+            const SizedBox(height: 24),
             Text(
               'Steps',
               textAlign: TextAlign.center,
@@ -105,28 +109,89 @@ class MealDetailScreen extends ConsumerWidget {
                     fontWeight: FontWeight.bold,
                   ),
             ),
-            const SizedBox(
-              height: 14,
-            ),
-            for (final steps in meal.steps)
+            const SizedBox(height: 14),
+            for (final step in meal.steps)
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 8,
-                ),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 child: Text(
-                  steps,
+                  step,
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         color: Theme.of(context).colorScheme.onBackground,
                       ),
                 ),
               ),
-            const SizedBox(
-              height: 24,
-            ),
+            const SizedBox(height: 24),
           ],
         ),
-      ),
+      );
+    }
+
+    // 🖥️ Web / Large Screen layout
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Left Side (Image)
+        Expanded(
+          flex: 4, // ~40% width
+          child: Hero(
+            tag: meal.id,
+            child: Image.network(
+              meal.imageUrl,
+              height: MediaQuery.of(context).size.height, // fill vertically
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+
+        // Right Side (Ingredients + Steps)
+        Expanded(
+          flex: 6, // ~60% width
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Ingredients',
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+                const SizedBox(height: 14),
+                for (final ingredient in meal.ingredients)
+                  Text(
+                    ingredient,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).colorScheme.onBackground,
+                        ),
+                  ),
+                const SizedBox(height: 24),
+                Text(
+                  'Steps',
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+                const SizedBox(height: 14),
+                for (final step in meal.steps)
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    child: Text(
+                      step,
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: Theme.of(context).colorScheme.onBackground,
+                          ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
