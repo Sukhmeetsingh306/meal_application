@@ -94,152 +94,201 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(
-                  top: 30,
-                  bottom: 20,
-                  left: 20,
-                  right: 20,
+      body: LayoutBuilder(builder: (context, constraints) {
+        bool isLargeScreen = constraints.maxWidth > 900;
+        bool isLargeScreenWeb = constraints.maxWidth > 450;
+        return isLargeScreen
+            ? Stack(
+                children: [
+                  Image.asset(
+                    'assets/images/img.png',
+                    fit: BoxFit.cover,
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(color: Colors.black); // fallback color
+                    },
+                  ),
+                  Container(
+                    color: Colors.black,
+                    child: Center(
+                        child: pageCode(isLargeScreen, isLargeScreenWeb)),
+                  ),
+                ],
+              )
+            : SafeArea(
+                child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                    child: pageCode(isLargeScreen, isLargeScreenWeb)));
+      }),
+    );
+  }
+
+  Widget pageCode(bool isLargeScreen, bool isLargeScreenWeb) {
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        maxWidth: isLargeScreen ? 500 : double.infinity,
+      ),
+      child: Container(
+        height: isLargeScreen ? MediaQuery.of(context).size.height * 0.8 : null,
+        padding: EdgeInsets.symmetric(
+          horizontal: isLargeScreen ? 50 : 0,
+          vertical: isLargeScreen ? 50 : 0,
+        ),
+        decoration: isLargeScreen
+            ? BoxDecoration(
+                color: Colors.black54,
+                border: Border.all(color: Colors.grey, width: 2),
+                borderRadius: BorderRadius.circular(20), // Rounded edges
+              )
+            : null,
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(
+                    top: 30,
+                    bottom: 20,
+                    left: 20,
+                    right: 20,
+                  ),
+                  width: 200,
+                  height:
+                      200, // Ensure width and height are the same for a perfect circle
+                  child: ClipOval(
+                    child: Image.asset('assets/images/M.jpg'),
+                  ),
                 ),
-                width: 200,
-                height:
-                    200, // Ensure width and height are the same for a perfect circle
-                child: ClipOval(
-                  child: Image.asset('assets/images/M.jpg'),
-                ),
-              ),
-              Card(
-                margin: const EdgeInsets.all(20),
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Form(
-                      key: _form,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          if (!_isLogin)
-                            UserImagePickerWidget(
-                              onPickedImage: (pickedImage) {
-                                _selectedImage = pickedImage;
-                              },
-                            ),
-                          if (!_isLogin)
+                Card(
+                  margin: const EdgeInsets.all(20),
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Form(
+                        key: _form,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            if (!_isLogin)
+                              UserImagePickerWidget(
+                                onPickedImage: (pickedImage) {
+                                  _selectedImage = pickedImage;
+                                },
+                              ),
+                            if (!_isLogin)
+                              TextFormField(
+                                decoration: const InputDecoration(
+                                  labelText: 'Username',
+                                  labelStyle: TextStyle(color: Colors.grey),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.white),
+                                  ),
+                                ),
+                                style: const TextStyle(color: Colors.white),
+                                cursorColor: Colors.white,
+                                enableSuggestions: false,
+                                validator: (value) {
+                                  if (value == null ||
+                                      value.trim().length < 2 ||
+                                      value.isEmpty) {
+                                    return 'Please enter a valid Name';
+                                  }
+                                  return null;
+                                },
+                                onSaved: (newValue) {
+                                  _enteredUsername = newValue!;
+                                },
+                              ),
                             TextFormField(
                               decoration: const InputDecoration(
-                                labelText: 'Username',
+                                labelText: 'Email',
                                 labelStyle: TextStyle(color: Colors.grey),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.white),
                                 ),
                               ),
-                              style: const TextStyle(color: Colors.white),
                               cursorColor: Colors.white,
-                              enableSuggestions: false,
+                              style: const TextStyle(color: Colors.white),
+                              keyboardType: TextInputType.emailAddress,
+                              autocorrect: false,
+                              textCapitalization: TextCapitalization.none,
                               validator: (value) {
                                 if (value == null ||
-                                    value.trim().length < 2 ||
-                                    value.isEmpty) {
-                                  return 'Please enter a valid Name';
+                                    value.trim().isEmpty ||
+                                    !value.contains("@gmail.com") &&
+                                        !value.contains("@icloud.com") &&
+                                        !value.contains("@yahoo.com")) {
+                                  return 'Please enter a valid email';
                                 }
                                 return null;
                               },
                               onSaved: (newValue) {
-                                _enteredUsername = newValue!;
+                                _enteredEmail = newValue!;
                               },
                             ),
-                          TextFormField(
-                            decoration: const InputDecoration(
-                              labelText: 'Email',
-                              labelStyle: TextStyle(color: Colors.grey),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.white),
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                labelText: 'Password',
+                                hoverColor: Colors.white,
+                                labelStyle: TextStyle(color: Colors.grey),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
                               ),
-                            ),
-                            cursorColor: Colors.white,
-                            style: const TextStyle(color: Colors.white),
-                            keyboardType: TextInputType.emailAddress,
-                            autocorrect: false,
-                            textCapitalization: TextCapitalization.none,
-                            validator: (value) {
-                              if (value == null ||
-                                  value.trim().isEmpty ||
-                                  !value.contains("@gmail.com") &&
-                                      !value.contains("@icloud.com") &&
-                                      !value.contains("@yahoo.com")) {
-                                return 'Please enter a valid email';
-                              }
-                              return null;
-                            },
-                            onSaved: (newValue) {
-                              _enteredEmail = newValue!;
-                            },
-                          ),
-                          TextFormField(
-                            decoration: const InputDecoration(
-                              labelText: 'Password',
-                              hoverColor: Colors.white,
-                              labelStyle: TextStyle(color: Colors.grey),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.white),
-                              ),
-                            ),
-                            cursorColor: Colors.white,
-                            style: const TextStyle(color: Colors.white),
-                            obscureText: true,
-                            validator: (value) {
-                              if (value == null || value.trim().length < 6) {
-                                return 'Must be of 6 characters long';
-                              }
-                              return null;
-                            },
-                            onSaved: (newValue) {
-                              _enteredPassword = newValue!;
-                            },
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          if (_isAuthenticationUploading)
-                            const CircularProgressIndicator(),
-                          if (!_isAuthenticationUploading)
-                            ElevatedButton(
-                              onPressed: _submit,
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Theme.of(context)
-                                      .colorScheme
-                                      .primaryContainer),
-                              child: Text(
-                                _isLogin ? 'Login In' : 'Sign Up',
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          if (!_isAuthenticationUploading)
-                            TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  _isLogin = !_isLogin;
-                                });
+                              cursorColor: Colors.white,
+                              style: const TextStyle(color: Colors.white),
+                              obscureText: true,
+                              validator: (value) {
+                                if (value == null || value.trim().length < 6) {
+                                  return 'Must be of 6 characters long';
+                                }
+                                return null;
                               },
-                              child: Text(
-                                _isLogin
-                                    ? 'Create an account'
-                                    : 'Already have a account? Login',
-                                style: const TextStyle(color: Colors.white),
-                              ),
+                              onSaved: (newValue) {
+                                _enteredPassword = newValue!;
+                              },
                             ),
-                        ],
+                            const SizedBox(
+                              height: 12,
+                            ),
+                            if (_isAuthenticationUploading)
+                              const CircularProgressIndicator(),
+                            if (!_isAuthenticationUploading)
+                              ElevatedButton(
+                                onPressed: _submit,
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Theme.of(context)
+                                        .colorScheme
+                                        .primaryContainer),
+                                child: Text(
+                                  _isLogin ? 'Login In' : 'Sign Up',
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            if (!_isAuthenticationUploading)
+                              TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _isLogin = !_isLogin;
+                                  });
+                                },
+                                child: Text(
+                                  _isLogin
+                                      ? 'Create an account'
+                                      : 'Already have a account? Login',
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                              ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
