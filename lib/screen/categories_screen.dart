@@ -62,26 +62,24 @@ class _CategoryScreenState extends State<CategoryScreen>
 
   @override
   Widget build(BuildContext context) {
+    final isLargeScreen = MediaQuery.of(context).size.width > 800;
+
     return AnimatedBuilder(
       animation: _animationController,
       child: GridView(
         padding: const EdgeInsets.all(24),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: isLargeScreen ? 3 : 2,
           childAspectRatio: 1.5,
           crossAxisSpacing: 20,
           mainAxisSpacing: 20,
         ),
         children: [
-          //availableCategories.map((category) => CategoryGridItemWidget(category: category)).toList(); // cam also written in this way
           for (final category in availableCategories)
             CategoryGridItemWidget(
               category: category,
               onSelectedCategory: () {
-                _selectCategory(
-                  context,
-                  category,
-                );
+                _selectCategory(context, category);
               },
             )
         ],
