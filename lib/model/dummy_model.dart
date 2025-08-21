@@ -408,77 +408,6 @@ const dummyMealModels = [
     isLactoseFree: true,
   ),
   MealModel(
-      id: "m41",
-      categories: [
-        "c3",
-        "c6",
-      ],
-      title: "Thai Green Curry",
-      affordability: Affordability.pricey,
-      complexity: Complexity.hard,
-      imageUrl:
-          "https://www.bluedragon.ca/system/recipes/images/000/000/226/original/3-step-green-curry.jpg?1572290676",
-      duration: 60,
-      ingredients: [
-        "200g Chicken Breast",
-        "2 tablespoons Green Curry Paste",
-        "400ml Coconut Milk",
-        "1 Eggplant",
-        "1 Red Bell Pepper",
-        "Handful of Thai Basil Leaves",
-        "1 tablespoon Fish Sauce",
-        "1 tablespoon Palm Sugar"
-      ],
-      steps: [
-        "Cut chicken into bite-sized pieces.",
-        "Heat coconut milk in a pan until it starts to boil.",
-        "Add green curry paste and stir until fragrant.",
-        "Add chicken and cook until almost done.",
-        "Add sliced eggplant and bell pepper, cook until vegetables are tender.",
-        "Season with fish sauce and palm sugar.",
-        "Serve hot with steamed rice, garnished with Thai basil leaves."
-      ],
-      isGlutenFree: true,
-      isVegan: false,
-      isVegetarian: false,
-      isLactoseFree: true),
-  MealModel(
-      id: "m51",
-      categories: [
-        "c1",
-        "c8",
-      ],
-      title: "Ratatouille",
-      affordability: Affordability.affordable,
-      complexity: Complexity.simple,
-      imageUrl:
-          "https://ohmydish.com/wp-content/uploads/2015/03/Remys-ratatouille-2.jpg",
-      duration: 40,
-      ingredients: [
-        "1 Eggplant",
-        "2 Zucchinis",
-        "2 Bell Peppers (red and yellow)",
-        "4 Tomatoes",
-        "1 Onion",
-        "4 cloves Garlic",
-        "2 tablespoons Olive Oil",
-        "Herbs (thyme, rosemary, basil)",
-        "Salt and Pepper"
-      ],
-      steps: [
-        "Slice all vegetables into thin rounds or cubes.",
-        "Heat olive oil in a large pan or pot.",
-        "Add onions and garlic, sauté until fragrant.",
-        "Layer vegetables in the pan, alternating between eggplant, zucchini, bell peppers, and tomatoes.",
-        "Season each layer with herbs, salt, and pepper.",
-        "Cover and simmer for about 30 minutes, until vegetables are tender.",
-        "Serve hot or cold, garnished with fresh herbs."
-      ],
-      isGlutenFree: true,
-      isVegan: true,
-      isVegetarian: true,
-      isLactoseFree: true),
-  MealModel(
       id: "m61",
       categories: [
         "c7",
@@ -609,43 +538,6 @@ const dummyMealModels = [
       isVegan: false,
       isVegetarian: false,
       isLactoseFree: true),
-  MealModel(
-    id: "m101",
-    categories: [
-      "c9",
-      "c2",
-    ],
-    title: "Croque Monsieur",
-    affordability: Affordability.pricey,
-    complexity: Complexity.simple,
-    imageUrl:
-        "https://img.freepik.com/premium-photo/closeup-delicious-croque-monsieur-sandwich-bread-dinner-meal-tasty-meat-wooden-boardai-generated_548729-4979.jpg",
-    duration: 30,
-    ingredients: [
-      "4 slices White Bread",
-      "4 slices Ham",
-      "4 slices Gruyere or Emmental Cheese",
-      "2 tablespoons Butter",
-      "2 tablespoons Flour",
-      "1 cup Milk",
-      "Salt and Pepper",
-      "Nutmeg (optional)"
-    ],
-    steps: [
-      "Preheat oven to 180°C (350°F).",
-      "Melt butter in a saucepan, then whisk in flour to form a roux.",
-      "Gradually whisk in milk until smooth and thickened.",
-      "Season with salt, pepper, and nutmeg if using.",
-      "Toast bread slices lightly and place on a baking sheet.",
-      "Top each slice with ham and cheese, then spoon béchamel sauce over the top.",
-      "Bake for 10-15 minutes until cheese is bubbly and golden brown.",
-      "Serve hot with a side salad."
-    ],
-    isGlutenFree: false,
-    isVegan: false,
-    isVegetarian: false,
-    isLactoseFree: false,
-  ),
   MealModel(
     id: "m112",
     categories: [
