@@ -39,75 +39,80 @@ class MealsItemWidget extends StatelessWidget {
         onTap: () {
           onSelectedMeal(meal);
         },
-        child: Stack(
-          children: [
-            Hero(
-              tag: meal.id,
-              child: FadeInImage(
-                placeholder: MemoryImage(kTransparentImage),
-                image: NetworkImage(
-                  meal.imageUrl,
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final isWide = constraints.maxWidth > 300;
+
+            return Stack(
+              children: [
+                Hero(
+                  tag: meal.id,
+                  child: FadeInImage(
+                    placeholder: MemoryImage(kTransparentImage),
+                    image: NetworkImage(meal.imageUrl),
+                    fit: BoxFit.cover,
+                    height: isWide ? 500 : 150, // 👈 smaller height on web/grid
+                    width: double.infinity,
+                  ),
                 ),
-                fit: BoxFit.cover,
-                height: 200,
-                width: double.infinity,
-              ),
-            ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 5,
-                  horizontal: 44,
-                ),
-                color: Colors.black54,
-                child: Column(
-                  children: [
-                    Text(
-                      meal.title,
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      softWrap: true,
-                      overflow: TextOverflow.ellipsis, // add ... in end
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+
+                // ✅ Bottom overlay
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 6,
+                      horizontal: 12,
                     ),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    color: Colors.black54,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        MealItemTraitWidget(
-                          iconData: Icons.schedule_outlined,
-                          label: '${meal.duration} min',
+                        // Title
+                        Text(
+                          meal.title,
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                          softWrap: true,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize:
+                                isWide ? 16 : 20, // 👈 smaller text on grid
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
-                        const SizedBox(
-                          width: 12,
-                        ),
-                        MealItemTraitWidget(
-                          iconData: Icons.work,
-                          label: complexityText,
-                        ),
-                        const SizedBox(
-                          width: 12,
-                        ),
-                        MealItemTraitWidget(
-                          iconData: Icons.attach_money,
-                          label: affordabilityText,
+                        const SizedBox(height: 8),
+
+                        // Traits row
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            MealItemTraitWidget(
+                              iconData: Icons.schedule_outlined,
+                              label: '${meal.duration} min',
+                            ),
+                            const SizedBox(width: 12),
+                            MealItemTraitWidget(
+                              iconData: Icons.work,
+                              label: complexityText,
+                            ),
+                            const SizedBox(width: 12),
+                            MealItemTraitWidget(
+                              iconData: Icons.attach_money,
+                              label: affordabilityText,
+                            ),
+                          ],
                         ),
                       ],
-                    )
-                  ],
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ],
+              ],
+            );
+          },
         ),
       ),
     );

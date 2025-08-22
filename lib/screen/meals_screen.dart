@@ -48,18 +48,39 @@ class MealsScreen extends StatelessWidget {
       ),
     );
 
-    if (meals.isNotEmpty) {
-      content = ListView.builder(
-        itemCount: meals.length,
-        itemBuilder: (context, index) {
-          return MealsItemWidget(
-            meal: meals[index],
-            onSelectedMeal: (meal) {
-              selectedMeal(context, meal);
-            },
-          );
-        },
-      );
+    if (meals != null && meals.isNotEmpty) {
+      final screenWidth = MediaQuery.of(context).size.width;
+
+      if (screenWidth > 600) {
+        // ✅ GridView for Web / Tablet
+        content = GridView.builder(
+          padding: const EdgeInsets.all(16),
+          itemCount: meals.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, // 2 per row
+            crossAxisSpacing: 16,
+            mainAxisSpacing: 16,
+            childAspectRatio: 3 / 2,
+          ),
+          itemBuilder: (context, index) {
+            return MealsItemWidget(
+              meal: meals[index],
+              onSelectedMeal: (meal) => selectedMeal.call(context, meal),
+            );
+          },
+        );
+      } else {
+        // ✅ ListView for Mobile
+        content = ListView.builder(
+          itemCount: meals.length,
+          itemBuilder: (context, index) {
+            return MealsItemWidget(
+              meal: meals[index],
+              onSelectedMeal: (meal) => selectedMeal.call(context, meal),
+            );
+          },
+        );
+      }
     }
 
     if (title == null) {
